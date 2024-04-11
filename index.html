@@ -9,18 +9,32 @@
 <body>
     <style>
         * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Добавляем, чтобы учитывать padding и border в общей ширине и высоте элемента */
 }
+
+html, body {
+    height: 100%; /* Устанавливаем высоту html и body на 100% */
+}
+
 body {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.container {
+
+
+canvas {
+    display: block; /* Убираем пробелы вокруг canvas */
+}
+.game {
     display: flex;
     width: 100%;
-    height: 100vh; /* Set height to 100vh */
-    margin: 0; /* Remove margin */
-    padding: 0; /* Remove padding */
+    height: 100vh;
+    margin: 0; 
+    padding: 0; 
     background-image: url("gr33.png");
     background-size: cover;
     background-position: center;
@@ -29,8 +43,7 @@ body {
 }
 #score {
     position: absolute; /* Расположение абсолютно относительно родительского элемента */
-    top: 20px; /* Отступ сверху */
-    left: 20px; /* Отступ слева */
+
     font-size: 20px; /* Размер шрифта */
     color: white; /* Цвет текста */
     z-index: 1; /* Слой поверх canvas */
@@ -71,41 +84,14 @@ body {
 }
 
 /* Other CSS rules remain unchanged */
-.game {
-    position: relative;
-    max-width: 100%; /* Ограничить максимальную ширину класса game */
-    max-height: 100%;
-    display: flex;
-    margin: auto;
-}
 
-.content{
-    margin: auto;
-    width: 50%;
-    height: 400px;
-    background-color: black;
-    display: inline;
-    justify-content: center;
-    margin-bottom: 800px;    
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-content: center; */
-}
+
 .title{
     display: flex;
     justify-content: center;
 }
-.links{
-    display: flex;
-    justify-content: space-around;
-}
 
-.content h1{
-    font-size: 100px;
-    color: antiquewhite;
-}
     </style>
-    <div class="container">
         <div class="game">
             <canvas id="board"></canvas>
             <div class="title">
@@ -113,7 +99,6 @@ body {
             </div>
             <div id="score"></div>
         </div>
-    </div>
     <script>
         let blockSize = 95;
 let total_row = 10; //total row number
